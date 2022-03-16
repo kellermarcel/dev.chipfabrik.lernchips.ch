@@ -1,0 +1,76 @@
+
+
+<div id="modal" class="uk-modal" style="display:block;">
+	<div class="uk-modal-dialog uk-modal-body">
+			   <span class="modal-close abbrechen" _="on click take .uk-open from #modal wait 200ms then remove #modal">+</span>
+		<h2 class="uk-modal-title" style="text-align: center;">Chipsetlinks</h2>
+
+
+        <% url=CONTENTSERVER+'/h5p/play/'+@chipset.urlextern %>
+
+                <a href="<%=SERVER%>/viewlink?id=<%=@chipset.urlextern %>" target="_blank">
+                <div id="qrcode"  style="margin-top:10px; width:80px; float:left;"></div></a>
+                
+
+                <!-- QR Code erstellen und in ID qrcode einsetzen -->
+
+                                  <a class="lclink" href="<%=SERVER%>/viewlink?id=<%=@chipset.urlextern %>" target="_blank"><%=@chipset.title%>
+                  <span class="fas fa-copy" data-toggle="tooltip" title="Link in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=url%>')"> </span></a> 
+               <div class="lti">
+                <br/><br/><br/><br/>
+                <b>LTI - Zugang</b>
+                <br/>Tool - Url: <%=SERVER%>/lti/launch
+                <li class="fas fa-copy" data-toggle="tooltip" title="Link in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=SERVER%>/lti/launch')"> </li>
+                <br/>
+
+                Anwenderschlüssel: <%= @chipset.urlextern%>
+                <li class="fas fa-copy" data-toggle="tooltip" title="Anwenderschlüssel in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=@chipset.urlextern%>')"> </li>
+                <br/>
+
+                Kennwort: <%= @chipset.ltisecret%>
+                <li class="fas fa-copy" data-toggle="tooltip" title="Kennwort in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=@chipset.ltisecret%>')"> </li>
+                <!-- Download Lernchip wenn  Admin -->
+                <%if current_user.role=="admin" %>
+
+
+                <% end %>
+    </div>
+</div> 
+<style>
+	.lclink {
+		margin-left:90px;
+
+	}
+	.lti {
+		text-align:left;
+	}
+	</style>
+<script>
+function copyStringToClipboard (str) {
+   // Temporäres Element erzeugen
+   var el = document.createElement('textarea');
+   // Den zu kopierenden String dem Element zuweisen
+   el.value = str;
+   // Element nicht editierbar setzen und aus dem Fenster schieben
+   el.setAttribute('readonly', '');
+   el.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(el);
+   // Text innerhalb des Elements auswählen
+   el.select();
+   // Ausgewählten Text in die Zwischenablage kopieren
+   document.execCommand('copy');
+   // Temporäres Element löschen
+   document.body.removeChild(el);
+}
+</script>
+<script type="text/javascript">
+
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "<%=SERVER%>/viewlink?id=<%=@chipset.urlextern %>",
+    width: 80,
+    height: 80,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+</script>

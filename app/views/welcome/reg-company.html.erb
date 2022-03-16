@@ -1,0 +1,37 @@
+    <main class="reg-company page-main">
+
+        <div class="container">
+            <div class="flex-content">
+                <h1 class="page-title">Resigstrierung Institution</h1>
+                <div class="show-warn"></div>
+                <div class="main-content">
+                    <div class="wr-img"><img src="img/werde_teil.png" alt=""></div>
+                    <div class="reg-form">
+                        <form id="regForm" novalidate>
+                            <p class="inp-user block-text">
+                                <span class="user-ico"></span><input type="text" id="regUser" name="log_user" required minlength="2" maxlength="8" value="" placeholder="Enter your name">
+                            </p>
+                            <p class="inp-pwd block-text">
+                                <span class="company-ico"></span><input type="text" id="regCompany" name="reg_company" required value="" minlength="4" maxlength="10" placeholder="Enter company name" title="4 to 10 lowercase letters">
+                            </p>
+                            <p class="inp-email block-text">
+                                <span class="email-ico"></span><input type="email" id="regEmail" name="log_email" value="" placeholder="mail@example.com">
+                            </p>
+                            <p class="inp-confirm block-text">
+                                <span class="phone-ico"></span><input type="phone" id="regPhone" name="reg_phone" value="" placeholder="##-###-###" title="##-###-###" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
+                            </p>
+                            <p class="have-read">
+                            <input type="checkbox" id="haveRead" value>
+                            <label class="fcheck-havere" for="haveRead">I have read the terms of the </label><a href="/privacy-policy.html">privacy policy</a></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="btn-weiter">
+                    <a class="btn btn-beige" href="/reg-page.html">Zurück</a>
+                    <a id="regWeiter" class="btn btn-yellow" href="javascript:void(0);">Weiter</a>
+                </div>
+            </div>
+        </div>
+
+    </main>

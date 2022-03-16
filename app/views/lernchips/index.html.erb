@@ -1,0 +1,288 @@
+
+    <main class="manage-page page-main">
+
+
+<div id="modals-here"></div>
+
+
+<!-- This is an anchor toggling the modal -->
+
+
+<!-- This is the modal für neuer Ordner -->
+<div id="modal-newfolder" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Neuer Ordner anlegen </h2>
+        <p class="uk-text-right">
+              <%= form_for :folder, url: foldercreate_path do |f| %>
+            <p class="name-ordner">
+              <span class="folder-ico"></span>
+              <input type="text" name="name" placeholder="Ordername">
+            </p>
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button type="submit" class="uk-button uk-button-primary" type="button">Save</button>
+          <% end %>
+        </p>
+    </div>
+</div>
+
+<!-- This is the modal für Lernchip Links -->
+<div id="modal-lclinks"></div>
+
+<!-- -->
+<!-- -->
+
+  <span id="folderid" value="1"></span>
+    <section class="sidebar">
+      <p id="notice"><%= notice %></p>
+      <a href="#modal-newfolder" uk-toggle class="btn-normal btn-yellow btn-plus">Neuer Ordner</a>
+
+
+            <p class="wr-buttons">
+               <!-- <a href="javascript:void(0);" class="zurueck">&lt; Zurueck</a> -->
+                <br/>
+                <a href="javascript:void(0);" class="hide-menu">&lt; Ordner ausblenden</a>
+            </p>
+            <p class="title-menu"></p>
+            <hr class="divider-menu">
+            <p class="folder-menu accordion">
+
+                <span class="folder"><img src="img/main-folder-icon.svg" alt=""></span>
+                <span value="0" id="0" hx-post="lernchips/showfoldercontent"  hx-vals='"folder_id": "1","folder_name":"<%= @foldername%>"'  hx-target="#main_content"  >Persönlicher Ordner</span><span class="top-arrow"><img src="img/down-arrow-icon-b.svg" alt=""></span>
+            </p>
+
+            <div class="panel">
+                <ul class="sub-menu">
+                    <div id="personalFolder">
+                        <% for folder in @folders %>
+                            <li class="smenu-item"  id="<%=folder.id%>" hx-post="lernchips/showfoldercontent"  hx-vals='"folder_id": "<%=folder.id%>","folder_name":"Persönlicher Ordner"'  hx-target="#main_content" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="javascript:showfoldertitle('<%=folder.name%>',<%=folder.id%>);" ><a id="<%=folder.id%>"><%= folder.name %></a></li>
+                        <% end %>
+                    </div>
+                </ul>
+            </div>
+<!---------- 
+
+  --------->
+
+<% if current_user.organisation_id!=1 %>
+            <p class="folder-menu accordion">
+                <span class="folder"><img src="img/main-folder-icon.svg" alt=""></span>
+<span value="0" id="0" hx-post="lernchips/showfoldercontent"  hx-vals='"folder_id": "<%= current_user.organisation.folder_id %>","folder_name":"<%= current_user.organisation.folder.name%>"'  hx-target="#main_content" ><%= current_user.organisation.folder.name %></span><span class="top-arrow"><img src="img/down-arrow-icon-b.svg" alt=""></span>
+            </p>
+            <div class="panel">
+                <ul class="sub-menu">
+                    <div id="personalFolder">
+                        <% for folder in @ofolders %>
+                            <li class="smenu-item"  id="<%=folder.id%>" hx-post="lernchips/showfoldercontent"  hx-vals='"folder_id": "<%=folder.id%>","folder_name":"<%= folder.name%>"'  hx-target="#main_content" ondrop="drop(event)" ondragover="allowDrop(event)"  ><a id="<%=folder.id%>"><%= folder.name %></a></li>
+                        <% end %>
+                    </div>
+                </ul>
+            </div>
+<% end %>
+<!--
+            <p class="folder-menu accordion">
+                <span class="folder"><img src="img/main-folder-icon.svg" alt=""></span>
+                 <span value="2" id="ofolder">Public</span><span class="top-arrow"><img src="img/down-arrow-icon-b.svg" alt=""></span>
+            </p>
+            <div class="panel">
+                <ul class="sub-menu">
+                    <li class="smenu-item"><a href="javascript:void(0);">For Alex</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Non Aprowed</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Uknown Tests</a></li>
+                    <li class="sme-nu-item"><a href="javascript:void(0);">To Alex on review</a></li>
+                </ul>
+            </div>
+-->
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+        </section>
+
+        <section class="main" id="main_content">
+             <%= render :partial => "foldercontent", :locals => {:maxzahl=>11, :lernchips => @lernchips, :chipsets => @chipsets, :foldername => @foldername } %>
+        </section>
+
+
+
+    </main>
+
+
+
+    <div id="blanket" class="blanket">
+        <div class="pop-message">
+            <h5 class="pm-title">Meine Elemente</h5>
+            <ul class="list-function">
+                <li class="lf-item">Klicke auf einen Ordner um die Inhalte anzuzeigen.</li>
+                <li class="lf-item">Klicke auf einen Lernchip oder ein Chipset um das Element anzuzeigen oder zu ändern.</li>
+            </ul>
+            <p class="dnt-show">
+                <input class="fcheck-input" type="checkbox" id="dnt_show" value="">
+                <label class="fcheck-input-label" for="dnt_show">Don't show this again</label>
+            </p>
+            <input type="button" class="btn-normal btn-black close-pop" value="Close">
+        </div>
+    </div>
+
+<!---------------------------------------------------------------------------------------------------------
+  Ende HTML
+  --------------------------------------------------------------------------------------------------------->
+
+<script>
+
+
+
+
+
+    function myFunction(){
+      console.log ("myfunction");
+           //          return 'id="showButton" hx-get="/modallernchipnew" hx-target="#modals-here"   class="btn-normal btn-yellow btn-plus"   _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal">'
+         //htmx.ajax("GET", "modallernchipnew", "#aktuellerOrdner")
+
+      
+    }
+
+// drag and drop Lernchips in Ordner
+
+//drag and drop
+function allowDrop(ev) {
+  ev.preventDefault();
+
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+
+}
+// Drag Lernchip in Ordner
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+
+  //ev.target.appendChild(document.getElementById(data));
+  var id=ev.target.id;
+
+    var data = ev.dataTransfer.getData("Text");
+   //document.getElementById(data).style.display = 'none';
+    var d=data;
+    console.log("data: "+data+" id "+id);
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "lernchips/movetofolder", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded","hx-include=[name=abc]");
+    xhttp.send("hx-target=#main_content&folder_id="+id+"&lernchip_id="+d);
+ // send(id,d);
+ }
+
+
+
+ // Lernchip in Chipset platzieren (drag and copy)
+ function drop_chipset(ev,target) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var chipset_id=target.id;
+  var lernchip_id=data;
+  console.log("drop chipset chipset_id: "+chipset_id+" lernchip_id "+lernchip_id);
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "lernchips/lernchiptochipset", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("hx-target=#main_content&chipset_id="+chipset_id+"&lernchip_id="+lernchip_id);
+}
+
+// Ordner anzeigen
+function showfoldernew(id,titeltext){
+  console.log("function showfoldernew "+titeltext);
+  document.getElementById("aktuellerOrdner").innerHTML=titeltext;
+
+
+}
+
+
+function chipsetcontent(id,title) {
+    var foldername=title;
+    var typ='chipset'
+    document.getElementById("aktuellerOrdner").innerHTML=foldername+' <a class="edit-menu btn-edit"  href="javascript:editChipset(`'+typ+'`,'+id+');"><span></span></a><a class="edit-menu btn-del" href="javascript:delChipset(`'+typ+'`,'+id+');"><span></span></a>';
+  console.log("Chipset.id "+id);
+    const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    // neue Ordner laden
+    rt=this.responseText;
+      document.getElementById("lernchips").innerHTML = rt
+      var x = document.getElementsByClassName("flex-three");
+      x[0].style.display="none";
+      content=document.getElementById("aktuellerOrdner");
+      content.className="title-chipset title-chipset--flexbox"
+
+
+      console.log(content.content);
+  }
+    xhttp.open("POST", "lernchips/contentchipset", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("chipset_id="+id);
+}
+
+
+function delChipset(typ,id){
+  console.log("delete id "+typ+' '+id);
+  let confirmAction = confirm("Soll das Chipset wirklich gelöscht werden");
+  if (confirmAction) {
+    alert("Action sucessfully executed");
+  }
+}
+
+
+
+
+
+    function showchipsettitle(title,id,anzahl){
+      console.log (title);
+      console.log(anzahl);
+
+         htmx.ajax("GET", "/courses/"+id, "#aktuellerOrdner")
+
+      
+    }
+
+    function showfoldertitle(title,id,anzahl){
+      console.log (title);
+      console.log(anzahl);
+
+         htmx.ajax("GET", "/folders/"+id, "#aktuellerOrdner")
+
+      
+    }
+
+
+ function editChipsetSave(id,typ){
+    var nameChipset = document.getElementById("nameChipset").value;
+  console.log("das Chipset wird editiert:"+id+' '+nameChipset);
+    //Modal close
+  var element = document.getElementById("newBlanket");
+  element.parentNode.removeChild(element);
+
+  // Titelanzeige anpassen
+    document.getElementById("aktuellerOrdner").innerHTML=nameChipset+' <a class="edit-menu btn-edit"  href="javascript:editChipset(`'+typ+'`,'+id+');"><span></span></a><a class="edit-menu btn-del" href="javascript:delChipset(`'+typ+'`,'+id+');"><span></span></a>';
+  console.log("Chipset.id "+id+' '+typ); 
+  // speichern
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "lernchips/chipsettitle", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("chipset_id="+id+",chipset_title="+nameChipset);
+  }
+
+
+ function edittitle(id,title) {
+  console.log("id "+id);
+  console.log("Titel "+title);
+
+ }
+
+
+  function folderdel(){
+  console.log("delete id "+typ+' '+id);
+  let confirmAction = confirm("Soll das Chipset wirklich gelöscht werden");
+  if (confirmAction) {
+    alert("Action sucessfully executed");
+  }
+}
+
+
+</script>
+

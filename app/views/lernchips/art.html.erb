@@ -1,0 +1,37 @@
+
+<main class="manage-page page-main">
+  <section class="main" id="main_content">
+  	<div id="modals-here"></div>
+   	<a href="javascript:history.back()">Zurück</a><br/><br/>
+ 	<%  contentart=Contentart.find(params[:id]) %>
+  	<img  style="float: right; margin: 0px 0px 15px 15px;" src="<%='assets/art.png' %>">
+	<h1 class="info_title">Wähle einen Lernchiptyp</h1>
+    <p class="info_subtitle">Wähle aus den unterschiedlichen Typen der Kategorie <%= contentart.title%><br/>
+	<% c=Contenttypart.where("contentart_id=#{contentart.id}") %>
+	<% c.each do |con| %>
+	  <div class="lc-typ-box"> 
+		<% if con.contenttyp.image.attached? %>
+			<img src="<%=(url_for(con.contenttyp.image)) %>" width="100" height="100" border="0" alt="Banner" style="float:left">
+		<% end %>
+
+		<% if current_user.subscription_typ=="free_lernchips" && !con.contenttyp.free %>
+		 		<span style="float:right">Nur im Abo plus</span>
+			<% else %>
+                     <a 
+                        id="showButton"
+                        hx-get="/modallernchipnew" 
+                        hx-target="#modals-here" 
+                        hx-vals='"contenttyp":"<%=con.contenttyp.id%>"'
+                        class="btn-normal btn-yellow btn-plus" 
+                        _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"><%= con.contenttyp.name %>
+                      </a>
+	     	                     
+		<% end %>
+		<% if con.contenttyp.demolink %>
+		 	     <span style="display:inline-block"><%= button_to "Lernchip Demo", con.contenttyp.demolink, class: "login-button", method: :get %></span>
+		<% end %>
+	  </div>
+	  <br/>
+	<% end %>
+ </section>
+</main>

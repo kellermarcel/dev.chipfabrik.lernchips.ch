@@ -1,0 +1,20 @@
+<div id="modal" class="popup uk-modal" style="display:block;">
+	<div class="uk-modal-dialog uk-modal-body">
+	   <span class="modal-close abbrechen" _="on click take .uk-open from #modal wait 200ms then remove #modal">+</span>
+		<h2 class="uk-modal-title">Neues Chipset erstellen</h2>
+
+        	<div>
+				<input type="text" class="uk-input" name="title" placeholder="Name des Chipsets">
+			</div>
+			<br/>
+			<button 
+				id="cancelButton"
+				type="button" 
+				class="btn-small btn-red uk-button uk-button-default" 
+				_="on click take .uk-open from #modal wait 200ms then remove #modal">Abbrechen</button>
+			<button hx-post="modalchipset"hx-include="[name=title]" hx-target="#main_content" class="btn-small btn-green uk-button" _="on click take .uk-open from #modal wait 200ms then remove #modal">Erstellen</button>
+
+		</div>
+	</div>
+
+	

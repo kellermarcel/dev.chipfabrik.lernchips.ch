@@ -1,0 +1,33 @@
+<div id="modal" class="popup uk-modal" style="display:block;">
+	<div class="uk-modal-dialog uk-modal-body">
+			   <span class="modal-close abbrechen" _="on click take .uk-open from #modal wait 200ms then remove #modal">+</span>
+		<h2 class="uk-modal-title">Neuer Lernchip erstellen</h2>
+
+<%=form_with(model: lernchip) do |form| %>
+        <div>
+        	<%= form.text_field :title %>
+        	<%= form.hidden_field :contenttyp_id, value: params[:contenttyp] %>
+		</div>
+		<% if params[:contenttyp]=="51" %><br/>
+
+
+<%= form.label :datei %>
+
+<%= form.file_field :datei %>
+
+		<% end %>
+
+		<br/>
+			<button 
+				id="cancelButton"
+				type="button" 
+				class="btn-small btn-red uk-button uk-button-default" 
+				_="on click take .uk-open from #modal wait 200ms then remove #modal">Abbrechen</button>
+	
+			<button type="submit" class="btn-small btn-green uk-button" _="on click take .uk-open from #modal wait 200ms then remove #modal">Erstellen</button>
+	</div>
+
+<% end %>
+
+
+</div> 

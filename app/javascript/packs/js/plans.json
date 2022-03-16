@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Kostenloses",
+        "description": "Praesent vel fringilla est  odio id tellus.",
+        "price": "Free",
+        "content": [
+            {"name": "Volle Funktionalität", "val": "check"},
+            {"name": "Lernchips(30 aus 44)", "val": "check"},
+            {"name": "Externe Links", "val": "check"},
+            {"name": "Alle Lernchips", "val": "close"},
+            {"name": "Chipset", "val": "close"},
+            {"name": "Exklusives Nutzungsrecht", "val": "close"},
+            {"name": "LTI Export", "val": "close"},
+            {"name": "Gruppenfunktionen", "val": "close"}
+        ]
+    },
+    {
+        "name": "Anwender Plus",
+        "description": "Vivamus volutpat sem sed molestie tincidunt.",
+        "price": "From 7 EUR/mo",
+        "content": [
+            {"name": "Volle Funktionalität", "val": "check"},
+            {"name": "Lernchips(30 aus 44)", "val": "check"},
+            {"name": "Externe Links", "val": "check"},
+            {"name": "Alle Lernchips", "val": "check"},
+            {"name": "Chipset", "val": "check"},
+            {"name": "Exklusives Nutzungsrecht", "val": "check"},
+            {"name": "LTI Export", "val": "close"},
+            {"name": "Gruppenfunktionen", "val": "close"}
+        ]
+    },
+    {
+        "name": "Institutionen",
+        "description": "Sed viverra dictum sapie vitae volutpat nisl sed....",
+        "price": "From 20 EUR/mo",
+        "content": [
+            {"name": "Volle Funktionalität", "val": "check"},
+            {"name": "Lernchips(30 aus 44)", "val": "check"},
+            {"name": "Externe Links", "val": "check"},
+            {"name": "Alle Lernchips", "val": "check"},
+            {"name": "Chipset", "val": "check"},
+            {"name": "Exklusives Nutzungsrecht", "val": "check"},
+            {"name": "LTI Export", "val": "check"},
+            {"name": "Gruppenfunktionen", "val": "check"}
+        ]
+    }
+]

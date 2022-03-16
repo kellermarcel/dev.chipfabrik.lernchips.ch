@@ -1,0 +1,89 @@
+
+
+<div id="modal" class="uk-modal" style="display:block;">
+	<div class="uk-modal-dialog uk-modal-body">
+			   <span class="modal-close abbrechen" _="on click take .uk-open from #modal wait 200ms then remove #modal">+</span>
+		<h2 class="uk-modal-title" style="text-align: center;">Lernchiplinks</h2>
+
+      
+
+        <% url=CONTENTSERVER+'/h5p/play/'+@lernchip.urlalias %>
+             <% if @lernchip.contenttyp.typ==1 %>
+                <a href="<%=CONTENTSERVER%>/h5p/play/<%=@lernchip.urlalias %>" target="_blank">
+                <div id="qrcode"  style="margin-top:10px; width:80px; float:left;"></div></a>
+                
+
+                <!-- QR Code erstellen und in ID qrcode einsetzen -->
+
+                <a class="lclink" href="<%=CONTENTSERVER%>/h5p/play/<%=@lernchip.urlalias %>" target="_blank"><%=@lernchip.title%>
+            <% end %>
+             <% if @lernchip.contenttyp.typ==2 %>
+                      <a href="<%=SERVER%>/pdfshow?id=<%=@lernchip.id %>" target="_blank">
+                <div id="qrcode"  style="margin-top:10px; width:80px; float:left;"></div></a>
+                <a class="lclink" href="<%=SERVER%>/pdfshow?id=<%=@lernchip.id %>" target="_blank"><%=@lernchip.title%>
+              <% end %>
+                <span class="fas fa-copy" data-toggle="tooltip" title="Link in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=url%>')"> </span></a> 
+
+               <div class="lti">
+                <br/><br/><br/><br/>
+                <b>LTI - Zugang</b>
+                <br/>Tool - Url: <%=SERVER%>/lti/launch
+                <li class="fas fa-copy" data-toggle="tooltip" title="Link in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=SERVER%>/lti/launch')"> </li>
+                <br/>
+
+                Anwenderschlüssel: <%= @lernchip.urlalias%>
+                <li class="fas fa-copy" data-toggle="tooltip" title="Anwenderschlüssel in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=@lernchip.urlalias%>')"> </li>
+                <br/>
+
+                Kennwort: <%= @lernchip.ltisecret%>
+                <li class="fas fa-copy" data-toggle="tooltip" title="Kennwort in die Zwischenablage kopieren" onclick="copyStringToClipboard('<%=@lernchip.ltisecret%>')"> </li>
+                <!-- Download Lernchip wenn  Admin -->
+                <%if current_user.role=="admin" %>
+
+                  <br/><br/>
+                  <b>Download  H5P</b>
+                  <br/><a href="<%=CONTENTSERVER%>/h5p/download/<%=@lernchip.urlalias %>" target="_blank"><%=@lernchip.title%></a>
+                <% end %>
+              </div>
+       </div> 
+          
+
+
+<style>
+	.lclink {
+		margin-left:90px;
+
+	}
+	.lti {
+		text-align:left;
+	}
+	</style>
+<script>
+function copyStringToClipboard (str) {
+   // Temporäres Element erzeugen
+   var el = document.createElement('textarea');
+   // Den zu kopierenden String dem Element zuweisen
+   el.value = str;
+   // Element nicht editierbar setzen und aus dem Fenster schieben
+   el.setAttribute('readonly', '');
+   el.style = {position: 'absolute', left: '-9999px'};
+   document.body.appendChild(el);
+   // Text innerhalb des Elements auswählen
+   el.select();
+   // Ausgewählten Text in die Zwischenablage kopieren
+   document.execCommand('copy');
+   // Temporäres Element löschen
+   document.body.removeChild(el);
+}
+</script>
+<script type="text/javascript">
+
+  var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "<%=CONTENTSERVER%>/h5p/play/<%=@lernchip.urlalias %>",
+    width: 80,
+    height: 80,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+</script>

@@ -1,0 +1,79 @@
+<style>
+        html, body { height: 100%; background-color: white;}
+        .active {
+            background-color:#454925;
+            color: white;
+        }
+</style>    
+
+
+
+    <script src="
+https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src="
+https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+
+
+
+
+    <main class="test-preview page-main">
+
+        <section class="sidebar">
+            <div class="in-sidebar">
+                <p class="wr-buttons">
+                    <a href="/lernchips.html" class="zurueck">&lt; Zurueck</a>
+                </p>
+                <p class="title-menu"></p>
+
+       <div class="panel-menu">
+                    <ul class="list-group">
+                        <% x =1 %>
+                        <% for courseitem in @courseitems %>
+                        <% if x==1%>
+                               <li class="list-group-item active" id="<%=courseitem.lernchip.id%>" hx-post="/lcshow"  hx-vals='"urlalias": "<%=courseitem.lernchip.urlalias%>","id":"<%=courseitem.lernchip.id%>"'  hx-target="#content"><%= courseitem.lernchip.title %></li>
+                               <%else%>
+                               <li class="list-group-item" id="<%=courseitem.lernchip.id%>" hx-post="/lcshow"  hx-vals='"urlalias": "<%=courseitem.lernchip.urlalias%>","id":"<%=courseitem.lernchip.id%>"'  hx-target="#content"><%= courseitem.lernchip.title %></li>
+                               <% end %>
+                        <% x = x+1%>
+                        <% end %>
+    
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-section">
+            <h2 class="title-section"><%=@course.title%></h2>
+            <div class="container">
+                <div class="main-content" id="content">
+
+    
+                    <iframe
+                        height="100%";
+                        width="100%";
+                        frameborder="0" style="border:0; min-height:500px"
+                <% if @course.courseitems[0].lernchip.contenttyp.typ==2 %>
+                        src="<%= rails_blob_path(@course.courseitems[0].lernchip.datei) %>" >
+                <% end %>
+                <% if @course.courseitems[0].lernchip.contenttyp.typ==1 %> 
+                        src="<%= CONTENTSERVER%>/h5p/play/<%= @course.courseitems[0].lernchip.urlalias %>" allowfullscreen>
+                 <% end %>
+                    </iframe>
+
+                </div>
+            </div>
+        </div><!-- tile-02 -->
+
+    </main>
+    <script>
+        $(document).ready(function() {
+            $('li').click(function() {
+                $('li.list-group-item.active').removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>

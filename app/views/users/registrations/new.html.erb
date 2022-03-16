@@ -1,0 +1,80 @@
+<style>
+    .individual-step .reg-line .number-step span::before {
+        background-color:green;
+    }
+    .individual-step .reg-line .number-step.ready span {
+        border: 6px solid green;
+    }
+</style>
+
+    <main class="individual-step page-main">
+        <div class="container">
+            <div class="flex-content">
+                <h1 class="page-title">Registrierung </h1>
+                <div class="reg-line">
+
+                    <div class="number-step ready">
+                        <span class="step-one">1</span>
+                        <div class="step-text">Abonnementswahl</div>
+                    </div>
+                    <div class="number-step active">
+                        <span class="step-two">2</span>
+                        <div class="step-text">Persönliche Daten</div>
+                    </div>
+                    <div class="number-step next">
+                        <span class="step-three">3</span>
+                        <div class="step-text">Zahlungsinformationen</div>
+                    </div>
+                    <span class="mstep-one"></span>
+                    <span class="mstep-two"></span>
+                </div>
+                <div class="show-warn"></div>
+                <div class="main-content">
+                    <div class="wr-img"><img src="img/werde_teil.png" alt=""></div>
+                    <div class="reg-form">
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                          <%= render "users/shared/error_messages", resource: resource %>
+                            <p class="inp-user block-text">
+                                <span class="user-ico"></span><%= f.text_field :first_name, autofocus: true, required: true,placeholder: "Vorname eingeben" %>
+                            </p>
+                            <p class="inp-user block-text">
+                                <span class="user-ico"></span><%= f.text_field :last_name, autofocus: true, required: true,placeholder: "Name eingeben" %>
+                            </p>
+                            <p class="inp-email block-text">
+                                <span class="email-ico"></span>    <%= f.email_field :email, autofocus: true, required: true,placeholder: "mail@example.com", autocomplete: "email", id: "regEmail" %>
+                            </p>
+
+                            <p class="inp-pwd block-text">
+                                <span class="pwd-ico"></span><%= f.password_field :password, autocomplete: "new-password", required: true, placeholder: "Passwort eingeben", minlength: "6" %>
+                            </p>
+
+
+                            <p class="inp-confirm block-text">
+                                <span class="pwd-ico"></span>    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, placeholder: "Passwort bestätigen" %>
+                            </p>
+                            <p>
+                            <%= f.hidden_field :organisation_id, :value => 1 %>
+                            <input type="checkbox" id="haveRead" required value>
+                            <label class="fcheck-havere" for="haveRead">Ich habe die </label><a href="/user-cond">Nutzungsbedingungen</a> gelesen.</p>
+                            <p><input type="checkbox" id="haveRead" required value>
+                            <label class="fcheck-havere" for="haveRead">Ich habe die </label><a href="/privacy-policy">Datenschutzbestimmungen</a> gelesen.</p>
+                <div class="btn-weiter">
+                    <a class="btn btn-beige" href="/reg-page.html">Zurück</a>
+                        <%= f.submit class: "btn btn-yellow", value: "Registrieren" %>
+                </div>
+            </div>
+
+
+                        <% end %>
+                    </div>
+                </div>
+
+
+        </div>
+
+    </main>
+
+
+
+<script defer src="indStep.bundle.js"></script></body>
+

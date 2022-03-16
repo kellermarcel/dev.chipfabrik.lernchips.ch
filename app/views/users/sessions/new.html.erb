@@ -1,0 +1,25 @@
+                    <form class="new_user" id="new_user" action="/users/sign_in" method="post">
+                        <span class="modal-close abbrechen">&#43;</span>
+                        <h5 class="bl-title">Login NEU</h5>
+                        <p class="inp-email">
+                            <span class="email-ico"></span><input type="email" id="user_mail" name="user[email]" value="" placeholder="mail@example.com">
+                        </p>
+                        <p class="inp-pwd">
+                            <span class="pwd-ico"></span><input type="password" id="user_password" name="user[password]" value="" placeholder="enter password">
+                        </p>
+                        <p class="remember-me">
+                        <input type="checkbox" id="rememberMe" value>
+                        <label class="fcheck-rme" for="rememberMe">Remember me</label>&nbsp;|
+                        &nbsp;<a href="javascript:void(0);">Password vergessen?</a></p>
+                        
+                        <p class="btn-login">
+                            <!--
+                              <a href="/users/sign_in" id="loginUser" class="btn-small btn-green log-user">Anmelden</a>
+                            -->
+                            <input type="submit"  class="btn-small btn-green log-user" name="commit" value="Anmelden" data-disable-with="Anmelden" >
+                        </p>
+                        <p class="link-register">Noch nicht Mitglied?
+                            <a href="/reg-page.html" id="newReg" class="link-green new-reg">Registrieren</a>
+                        </p>
+                    </form>
+                    <%= render "users/shared/links" %>

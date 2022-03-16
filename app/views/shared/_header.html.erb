@@ -1,0 +1,55 @@
+    <header class="top-nav">
+        <div class="wr-menu-logo">
+            <a href="/"><img src="img/logo-w.svg" alt=""></a>
+            <nav class="top-menu">
+                <ul>
+
+                    <li><a href="/prices-page.html">Preise</a></li>
+					<% if user_signed_in? %>
+                    	<li><a href="/lernchips">Lernchips</a></li>
+					<% end %>                
+				</ul>
+            </nav>
+            <div class="wr-mobtn">
+                <div class="mobtn"><span></span></div>
+            </div>
+        </div>
+
+
+		<% if user_signed_in? %>
+        	<div id="menuAdmin" class="wr-menu-admin">
+            	<nav class="user-link">
+
+                <% if current_user.image.attached? %>
+                    <%= image_tag url_for(current_user.image), style: "height:30px" %>
+                   
+
+                <% end %>
+                	<span class="user-name">&nbsp;&nbsp;<%= current_user.full_name %></span>
+            	</nav>
+            	<div class="wr-account-nav">
+                	<ul class="account-nav">
+                    	<li class="accout-nav-item">
+                        	<span class="item-ico bg-einstellungen"></span><%= link_to('Edit registration', edit_user_registration_path) %></li>
+                    	<li class="accout-nav-item">
+                        	<span class="item-ico bg-abo"></span><a href="javascript:void(0)">Meine Abonnements</a></li>
+                        <li class="accout-nav-item">
+                            <span class="item-ico bg-rechnungen"></span><a href="javascript:void(0)">Rechnungen</a></li>
+                        <% if current_user.admin? %>
+                            <li class="accout-nav-item">
+                                <span class="item-ico "></span><%= link_to('Admin', rails_admin_path) %></li>
+                        <% end %>
+                    	<li class="accout-nav-item">
+               
+                       	 	<span class="item-ico bg-abmelden"></span><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>      	</li>
+                	</ul>
+            	</div>
+        	</div>
+		<% else %>        
+        	<div id="menuAdmin" class="wr-menu-admin">
+            	<nav class="user-link">
+                	<span class="user-login">Login</span>
+            	</nav>
+        	</div>
+		<% end %>
+    </header>

@@ -1,0 +1,71 @@
+
+
+          <div class="flex-chips" id="lernchips">
+
+  <% Rails.logger.info session[:folder_id] %>
+            
+              <% anzahl = 0 %>
+
+
+              <% for chipset in @chipsets %>
+                <div class="item-chip" id="<%=chipset.id%>"  ondrop="drop_chipset(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" style="background-color:#e63838;min-width=175px;"><%= chipset.courseitems.count %>x
+                    <div class="wr-ico"><img src="img/chipset.png" alt=""></div>
+                 
+
+                    <h4 class="title-chip" style="margin-top:10px"><%= chipset.title %></h4>
+                    <div class="wr-icons" >
+                        <div class="left-half"></div>
+                        <div class="right-half">
+                            <%if chipset.courseitems.count>0 %>    
+                                <div hx-post="courses/contentchipset"  hx-vals='"chipset_id": "<%=chipset.id%>"'  hx-target="#lernchips" onclick="javascript:showchipsettitle('<%=chipset.title%>',<%=chipset.id%>);" ><a><span class="img-edit"></span></a></div>
+                                <a href="set-preview?id=<%=chipset.urlextern%>"><span class="img-view"></span></a>
+                                <a 
+                                  id="showLink"
+                                  hx-get="/chipsetlink" 
+                                  hx-target="#modal-lclinks"
+                                  hx-vals='"id":"<%=chipset.urlextern%>"'
+                                  _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"><span class="img-share"></span>
+                                </a>
+                            <% else %>
+                              <a href="javascript:void(0)" hx-confirm="Soll das Chipset gelöscht werden" hx-post="deletecourse" hx-vals='"id":"<%=chipset.urlextern%>"' hx-target="#main_content" ><span class="img-delete"></span></a>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <% anzahl = anzahl + 1 %>
+                <% if anzahl>maxzahl
+                    break
+                   end %>
+              <% end %>
+
+             <% if anzahl <= 11 %>
+              <% for lernchip in @lernchips %>
+                <div class="item-chip" id="<%=lernchip.id%>" ondblclick="myFunction()" draggable="true" ondragstart="drag(event)">
+                    <% if lernchip.contenttyp.image.attached? %>
+                        <div class="wr-ico">    <img src="<%=(url_for(lernchip.contenttyp.image)) %>" width="100" height="100" border="0" alt="Banner" ></div>
+                    <% end %>
+                    <h4 class="title-chip" style="margin-top:10px;"><%= lernchip.title %></h4>
+                    <div class="wr-icons">
+                        <div class="left-half"></div>
+                        <div class="right-half">
+                            <a href="<%=CONTENTSERVER%>/h5p/edit/<%=lernchip.urlalias%>"><span class="img-edit"></span></a>
+                            <a href="/test-preview?id=<%=lernchip.urlalias %>"><span class="img-view"></span></a>
+                      <a 
+                        id="showLink"
+                        hx-get="/lernchiplink" 
+                        hx-target="#modal-lclinks"
+                        hx-vals='"id":"<%=lernchip.urlalias%>"'
+                        _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"><span class="img-share"></span>
+                      </a>
+                            <a href="" hx-confirm="Soll der Lernchip gelöscht werden?" hx-post="deletelernchip" hx-vals='"id":"<%=lernchip.urlalias%>"' hx-target="#lernchips" ><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <% anzahl = anzahl + 1 %>
+                <% if anzahl>maxzahl
+                    break
+                   end %>
+              <% end %>
+            <% end %>
+    
+          </div>

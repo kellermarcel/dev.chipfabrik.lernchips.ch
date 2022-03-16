@@ -1,0 +1,198 @@
+
+
+ import { H5PPlayerComponent, H5PEditorComponent } from '@lumieducation/h5p-webcomponents';
+ window.customElements.define('h5p-player', H5PPlayerComponent);
+ window.customElements.define('h5p-editor', H5PEditorComponent);
+
+var mobe = mobe || {};
+
+mobe.consistBtn = false;
+
+mobe.navAccordion = new function() {
+
+    this.init = function() {
+        var acc = document.getElementsByClassName("accordion"), i,
+        maincon = document.getElementById('main_content'),
+        tit = maincon.querySelector(".title-mp");
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+  //            tit.innerText = this.innerText;
+                this.classList.toggle("active");
+
+
+
+//             oldid=document.getElementById("folderid").getAttribute("value");
+//              newid=this.children[1].getAttribute("value");
+//              document.getElementById("folderid").getAttribute("value");
+//              document.getElementById("folderid").setAttribute("value",newid);
+
+                
+
+                //create buttons
+                if(!mobe.consistBtn) {
+                    mobe.navAccordion.createBtns();
+                    mobe.consistBtn = true;
+                }
+                //open accordion
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+                var ch=this.children[1].getAttribute("value");
+
+                showfoldernew(ch,this.children[1].innerHTML);
+                // 
+            });
+        }
+    };
+
+    this.createBtns = function() {
+
+        sdb = document.querySelector(".sidebar .title-menu");
+        wrbtn = `<p class='create-btns'>
+                    <a data-name='new-folder' class='btn-normal btn-beige-green'><span class="btn-plus"></span>Ordner hinzufügen</a>           
+                </p>`;
+        sdb.insertAdjacentHTML('beforebegin', wrbtn);
+    }
+};
+
+mobe.leftMenu = new function() {
+
+    this.init = function() {
+        const sm = document.querySelector('.switch-menu'),
+            hm = document.querySelector('.hide-menu'),
+            mp = document.querySelector('.manage-page .sidebar');
+
+        sm.addEventListener('click', function() {
+
+            mp.classList.toggle('open');
+
+        });
+        hm.addEventListener('click', function(){
+            mp.classList.toggle('open');
+
+        });
+    };
+};
+
+mobe.showPop = new function() {
+
+    this.init = function() {
+        const bl = document.getElementById("blanket");
+    // das Startpopup
+       // setTimeout(function() {
+       //     bl.classList.add('open');
+       //     document.body.classList.toggle('noscroll');
+       // }, 2000);
+    };
+};
+
+mobe.closePop = new function() {
+
+    this.init = function() {
+        const cp = document.querySelector('.close-pop');
+        const bl = document.getElementById("blanket");
+        cp.addEventListener('click', function(){
+            bl.animate([
+                {opacity: 1},
+                {opacity: 0}
+            ], {
+                duration: 450,
+                fill: 'forwards'
+            });
+            setTimeout(function() {
+                bl.classList.remove('open');
+                document.body.classList.toggle('noscroll');
+            }, 450);
+        });
+    };
+};
+
+mobe.newElement = new function() {
+
+    this.init = function() {
+        const mp = document.querySelector('.manage-page');
+        mp.addEventListener('click', function(){
+            if(event.target.dataset.name === 'new-chip') {
+                console.log('new-chip');
+            } else if (event.target.dataset.name === 'new-chipset') {
+                console.log("target: new-chipset");
+                mobe.newElement.createChipset();
+              }
+             else if (event.target.dataset.name === 'new-folder') {
+                console.log("target:new-folder");
+                mobe.newElement.createFolder();
+              }
+
+        }, true);
+    };
+    // Inhalt des Popup "blanket
+    this.createFolder = function() {
+        const blan = document.getElementById("blanket");
+        maincon = document.getElementById('main_content'),
+        tit = maincon.querySelector(".title-mp").innerHTML;
+
+        const newBlanket = `
+            <div id="newBlanket" class="new-blanket open">
+                <div class="popup">
+                  <span class="modal-close abbrechen">&#43;</span>
+                    <h5 class="bl-title">ordner erstellen in `+tit+`</h5>
+                    <form id="myForm">
+                         <input type="hidden" id="parentid" name="parentid" value="`+document.getElementById("folderid").getAttribute("value")+`">
+                      <p class="name-ordner">
+                        <span class="folder-ico"></span><input type="text" name="nameOrdner" id="nameOrdner" value="" placeholder="Neuer Ordner">
+
+                         <p class="btn-ordner">
+                            <a href="javascript:void(0);" class="btn-small btn-red abbrechen">Abbrechen</a>
+                            <input type="button" class="btn-small btn-green erstellen" onclick="loadFolders()" value="Erstellen">
+                        </p>
+                    </form>
+                </div>
+            </div>`;
+
+        blan.insertAdjacentHTML('beforebegin', newBlanket);
+    }
+    // Inhalt des Popup "blanket"
+    this.createChipset = function() {
+        const blan = document.getElementById("blanket");
+        maincon = document.getElementById('main_content'),
+        tit = maincon.querySelector(".title-mp").innerHTML;
+
+        const newBlanket = `
+            <div id="newBlanket" class="new-blanket open">
+                <div class="popup">
+                  <span class="modal-close abbrechen">&#43;</span>
+                    <h5 class="bl-title">Chipset erstellen (neu)</h5>
+                    <form id="myForm">
+                         <input type="hidden" id="parentid" name="parentid" value="`+document.getElementById("folderid").getAttribute("value")+`">
+                      <p class="name-chipset">
+                        <span class="chipset-ico"></span><input type="text" name="nameChipset" id="nameChipset" value="" placeholder="Neues Chipset">
+
+                         <p class="btn-ordner">
+                            <a href="javascript:void(0);" class="btn-small btn-red abbrechen">Abbrechen</a>
+                            <input type="button" class="btn-small btn-green erstellen" onclick="newChipset()" value="Erstellen">
+                        </p>
+                    </form>
+                </div>
+            </div>`;
+
+        blan.insertAdjacentHTML('beforebegin', newBlanket);
+    }
+
+};
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    mobe.navAccordion.init();
+    mobe.leftMenu.init();
+    mobe.showPop.init();
+    mobe.closePop.init();
+
+    mobe.newElement.init();  // Popup
+}, false);
+
+

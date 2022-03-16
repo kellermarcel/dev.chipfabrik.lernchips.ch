@@ -1,0 +1,10 @@
+<%= chipset.title %>
+                      <a 
+                        id="showButton"
+                        hx-get="/courses/<%=chipset.id%>/edit" 
+                        hx-target="#modals-here" 
+                        class="edit-menu btn-edit" 
+                        _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"><span class="img-edit"></span>
+                      </a>
+
+

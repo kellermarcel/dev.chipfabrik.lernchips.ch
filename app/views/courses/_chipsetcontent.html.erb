@@ -1,0 +1,52 @@
+<%  if lernchips.size>0 %>
+<ul id="sortable" class=" uk-grid-small uk-child-width-expand@s uk-text-center" uk-sortable="handle: .uk-card" uk-grid>
+  <% for lernchip in lernchips %>
+
+  		<div class="uk-card item-chip " style="min-width:175px; margin-right:50px;" id="<%=lernchip.lernchip.id%>" draggable="true" ondragstart="drag(event)">
+          <div class="wr-ico"><img src="img/Accordeon.svg" alt=""></div>
+              <h4 class="title-chip"><%= lernchip.lernchip.title%> </h4><%= lernchip.lernchip.id %>
+                    <div class="wr-icons">
+                        <div class="left-half"></div>
+                        <div class="right-half">
+                            <a href="<%=CONTENTSERVER%>/h5p/edit/<%=lernchip.lernchip.urlalias%>"><span class="img-edit"></span></a>
+                            <a href="/test-preview?id=<%=lernchip.lernchip.urlalias%>"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0)" hx-confirm="Soll der Lernchip gelöscht werden?" hx-post="courses/contentchipset" hx-vals='"del":"true","id":"<%=lernchip.lernchip.urlalias%>","chipset_id":"<%=lernchip.course_id %>"' hx-target="#lernchips" ><span class="img-delete"></span></a>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+    <% end %>
+</ul>
+<% else %>    
+      <%= "Dieses Chipset hat noch keinen Inhalt" %>
+<% end %>
+
+
+
+
+<script>
+UIkit.util.on('#sortable', 'moved', function (item) {
+  //console.log(item.detail[1].id);
+  //UIkit.notification(`"${item.detail[1].id}" was moved.`, 'success');
+  const collection = document.getElementsByClassName("item-chip");
+  //console.log(collection[0]["id"]);
+  const ids=[]
+  for (var i = 0; i < collection.length-1; i++) {
+    console.log(collection[i]["id"],i);
+    ids.push(collection[i]["id"])
+    }
+    //Do something
+  console.log(ids);
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "courses/chipsetorder", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("ids=["+ids+"]");
+    
+
+});
+
+
+</script>

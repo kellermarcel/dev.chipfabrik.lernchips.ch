@@ -1,0 +1,3 @@
+                        <% for folder in @folders %>
+                            <li class="smenu-item" id="<%=folder.id%>" hx-post="lernchips/showfoldercontent"  hx-vals='"folder_id": "<%=folder.id%>","folder_name":"<%= folder.name%>"'  hx-target="#lernchips" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="javascript:showfoldertitle('<%=folder.name%>');" ><a id="<%=folder.id%>"><%= folder.name %></a></li>
+                        <% end %>

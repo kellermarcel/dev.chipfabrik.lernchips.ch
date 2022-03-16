@@ -1,0 +1,22 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="40" r="40" fill="#353535"/>
+<rect x="20" y="10" width="40" height="60" rx="3" fill="#F2F2F2"/>
+<rect x="23" y="15" width="34" height="5" rx="2" fill="#1C5623"/>
+<g clip-path="url(#clip0)">
+<path d="M53.1488 18.6207C53.1201 18.6495 53.081 18.6656 53.0405 18.6656C52.9999 18.6656 52.9608 18.6495 52.9322 18.6207L52.0673 17.7557C51.9776 17.666 51.9776 17.5204 52.0673 17.4309L52.1756 17.3225C52.2654 17.2328 52.4108 17.2328 52.5005 17.3225L53.0405 17.8625L54.4995 16.4035C54.5893 16.3137 54.7348 16.3137 54.8244 16.4035L54.9327 16.5118C55.0224 16.6015 55.0224 16.7471 54.9327 16.8367L53.1488 18.6207Z" fill="#3BB54A"/>
+</g>
+<rect x="23" y="25" width="34" height="5" rx="2" fill="#444444"/>
+<rect x="23" y="35" width="34" height="5" rx="2" fill="#444444"/>
+<rect x="23" y="45" width="34" height="5" rx="2" fill="#444444"/>
+<rect x="23" y="55" width="34" height="5" rx="2" fill="#444444"/>
+<line x1="25" y1="17.5" x2="49" y2="17.5" stroke="#3BB54A"/>
+<line x1="25" y1="27.5" x2="49" y2="27.5" stroke="#CCCCCC"/>
+<line x1="25" y1="37.5" x2="49" y2="37.5" stroke="#CCCCCC"/>
+<line x1="25" y1="47.5" x2="49" y2="47.5" stroke="#CCCCCC"/>
+<line x1="25" y1="57.5" x2="49" y2="57.5" stroke="#CCCCCC"/>
+<defs>
+<clipPath id="clip0">
+<rect width="3" height="3" fill="white" transform="translate(52 16)"/>
+</clipPath>
+</defs>
+</svg>

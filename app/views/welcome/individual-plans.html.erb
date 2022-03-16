@@ -1,0 +1,133 @@
+
+<main class="individual-plans page-main">
+
+    <div class="container">
+        <div class="flex-content">
+            <h1 class="page-title">Registrierung </h1>
+                <div class="reg-line">
+                    <div class="number-step active">
+                        <span class="step-one">1</span>
+                        <div class="step-text">Abonnementswahl</div>
+                    </div>
+                    <div class="number-step">
+                        <span class="step-two">2</span>
+                        <div class="step-text">Persönliche Daten</div>
+                    </div>
+                    <div class="number-step">
+                        <span class="step-three">3</span>
+                        <div class="step-text">Zahlungsinformationen</div>
+                    </div>
+                    <span class="mstep-one"></span>
+                    <span class="mstep-two"></span>
+                </div>
+
+            <div class="main-content">
+
+                <h3 class="sub-title">Wähle Dein Abonnement</h3>
+                <div class="plans-wrapper">
+                    <div class="plans-item" id="free" onclick="abo()">
+                        <div class="plans-item__top-info">
+                            <h4 class="plans-title">Free Lernchips</h4>
+                            <p class="price">0.00</p>
+                        </div>
+                        <div style="background-color: white; padding:0px" class="plans-item__bottom-info">
+                            <button class="collapsible">Details</button>
+                            <ul class="content">
+                                <li>Volle Funktionalität</li>
+                                <li>Lernchips (30 aus 44)</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                    <div class="plans-item" id="abo"  onclick="abo()">
+                        <div class="plans-item__top-info">
+                            <h4 class="plans-title">Standard Lernchips</h4>
+                            <p class="price">CHF 4.90 <span>pro Monat</span></p>
+
+                        </div>
+                        <div style="background-color: white; padding:0px" class="plans-item__bottom-info">
+                            <button class="collapsible">Details</button>
+                            <ul class="content">
+                                <li>Volle Funktionalität</li>
+                                <li>Lernchips (30 aus 44)</li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+        
+
+                <form action="signup" method="post">
+                    <input type="hidden" id="abotyp" name="abo" value="free">
+                    <div class="btn-weiter">
+                        <a class="btn btn-beige" href="/">Zurück</a>
+                        <button type="submit" class="btn btn-yellow" >Weiter </button>
+                    </div>
+
+
+
+        </div>
+    </div><!-- container -->
+   <script defer src="indPlans.bundle.js"></script>
+</main>
+
+
+
+
+
+<script>
+    function abo(){
+        active=document.getElementsByClassName('selected');
+        console.log(active[0].id)
+        if (active[0].id=='abo'){
+           document.getElementById("abotyp").setAttribute("value","abo")
+        }
+    }
+</script>
+<style>
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.plus, .collapsible:hover {
+
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 40px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+  color:black;
+}
+</style>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("plus");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>

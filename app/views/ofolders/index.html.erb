@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ofolders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parent</th>
+      <th>Organisation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ofolders.each do |ofolder| %>
+      <tr>
+        <td><%= ofolder.name %></td>
+        <td><%= ofolder.parent_id %></td>
+        <td><%= ofolder.organisation_id %></td>
+        <td><%= link_to 'Show', ofolder %></td>
+        <td><%= link_to 'Edit', edit_ofolder_path(ofolder) %></td>
+        <td><%= link_to 'Destroy', ofolder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ofolder', new_ofolder_path %>

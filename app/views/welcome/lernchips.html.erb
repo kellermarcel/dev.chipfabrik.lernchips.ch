@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chipfabrik - Lernchips</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<base href="/"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.ico"><link href="lernchips.css" rel="stylesheet"></head>
+
+<body>
+    <header class="top-nav">
+        <div class="wr-menu-logo">
+            <a href="/"><img src="img/logo-w.svg" alt=""></a>
+            <nav class="top-menu">
+                <ul>
+                    <li><a href="/user-cond.html">User Cond</a></li>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/prices-page.html">Prices</a></li>
+                    <li><a href="/contact-page.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="wr-mobtn">
+                <div class="mobtn"><span></span></div>
+            </div>
+        </div>
+        <div id="menuAdmin" class="wr-menu-admin">
+            <nav class="user-link">
+                <span class="user-avatar"><img src="img/avatar.png" alt=""></span>
+                <span class="user-name">Alex Adams</span>
+            </nav>
+            <div class="wr-account-nav">
+                <ul class="account-nav">
+                    <li class="accout-nav-item">
+                        <span class="item-ico bg-einstellungen"></span><a href="javascript:void(0)">Kontoeinstellungen</a></li>
+                    <li class="accout-nav-item">
+                        <span class="item-ico bg-abo"></span><a href="javascript:void(0)">Meine Abonnements</a></li>
+                    <li class="accout-nav-item">
+                        <span class="item-ico bg-rechnungen"></span><a href="javascript:void(0)">Rechnungen</a></li>
+                    <li class="accout-nav-item">
+                        <span class="item-ico bg-abmelden"></span><a class="exit-adminpart" href="javascript:void(0)">Abmelden</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main class="manage-page page-main">
+
+        <section class="sidebar">
+            <p class="wr-buttons">
+                <a href="javascript:void(0);" class="zurueck">&lt; Zurueck</a>
+                <a href="javascript:void(0);" class="hide-menu">&lt; Hide Menu</a>
+            </p>
+            <p class="title-menu">All</p>
+            <hr class="divider-menu">
+            <p class="folder-menu accordion">
+                <span class="folder"><img src="img/main-folder-icon.svg" alt=""></span>
+                Personal<span class="top-arrow"><img src="img/down-arrow-icon-b.svg" alt=""></span>
+            </p>
+            <div class="panel">
+                <ul class="sub-menu">
+                    <li class="smenu-item"><a href="javascript:void(0);">Interaction</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Select</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Audio</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Text</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Cards</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Quizes</a></li>
+                </ul>
+            </div>
+
+            <p class="folder-menu accordion">
+                <span class="folder"><img src="img/main-folder-icon.svg" alt=""></span>
+                Institutional<span class="top-arrow"><img src="img/down-arrow-icon-b.svg" alt=""></span>
+            </p>
+            <div class="panel">
+                <ul class="sub-menu">
+                    <li class="smenu-item"><a href="javascript:void(0);">For Alex</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Non Aprowed</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">Uknown Tests</a></li>
+                    <li class="smenu-item"><a href="javascript:void(0);">To Alex on review</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="main" id="main_content">
+
+            <div class="second-menu">
+                <h2 class="title-mp">Zuletzt verwendet</h2>
+                <div class="flex-one">
+                    <a class="switch-menu" href="javascript:void(0);">
+                        <span></span> Folders</a>
+                    <a class="edit-menu btn-edit" href="javascript:void(0);"><span></span></a>
+                    <a class="edit-menu btn-del" href="javascript:void(0);"><span></span></a>
+                </div>
+                <div class="flex-two">
+                    <a href="javascript:void(0);" class="btn-normal btn-yellow">
+                        <span class="btn-plus"></span>New Test</a>
+                    <a href="javascript:void(0);" class="btn-normal btn-red">
+                        <span class="btn-upload"></span>Upload PDF</a>
+                </div>
+                <div class="flex-three">
+                    <span class="wr-search">
+                        <input type="text" name="search-chips" id="search_chips">
+                        <span class="wr-img" id="search-chips"><img src="img/search-icon.svg" alt=""></span>
+                    </span>
+                    <select name="sort-chips" class="sort-chips" id="sort_chips">
+                        <option value="recently">Recently Updated</option>
+                        <option value="new-first">New first</option>
+                        <option value="by-name">By name</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex-chips">
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Accordeon.svg" alt=""></div>
+                    <h4 class="title-chip">My test 1</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Arithmetic Quiz.svg" alt=""></div>
+                    <h4 class="title-chip">Super Hard Test </h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Befragung.svg" alt=""></div>
+                    <h4 class="title-chip">My First Test </h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Column.svg" alt=""></div>
+                    <h4 class="title-chip">Wild Animals Pictures</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Column.svg" alt=""></div>
+                    <h4 class="title-chip">Anatomy Test</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Dictation.svg" alt=""></div>
+                    <h4 class="title-chip">VR <br>interactive video</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Dokumentation.svg" alt=""></div>
+                    <h4 class="title-chip">Ux Design Test 1</h4>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Drag and Drop.svg" alt=""></div>
+                    <h4 class="title-chip">First aid instruction</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Einfachauswahl.svg" alt=""></div>
+                    <h4 class="title-chip">Mindfulness test</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Essay.svg" alt=""></div>
+                    <h4 class="title-chip">Making a collage</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="javascript:void(0);"><span class="img-edit"></span></a>
+                            <a href="javascript:void(0);"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Flashcards.svg" alt=""></div>
+                    <h4 class="title-chip">Drag and drop The structure of the car</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-chip">
+                    <div class="wr-ico"><img src="img/Lektion.svg" alt=""></div>
+                    <h4 class="title-chip">True / False eng topic 1</h4>
+                    <div class="wr-icons">
+                        <div class="left-half"><input type="checkbox" name="check-item" class="check-item"></div>
+                        <div class="right-half">
+                            <a href="/test-editor.html"><span class="img-edit"></span></a>
+                            <a href="/test-preview.html"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="show-more">
+                <a href="javascript:void(0);">Mehr anzeigen</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer id="pageFooter" class="page-footer">
+        <div class="info-footer">
+            <div class="wr-info">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a class="active" href="#">Lernchips</a></li>
+                        <li><a href="/user-cond.html">User Cond</a></li>
+                        <li><a href="/prices-page.html">Preices</a></li>
+                        <li><a href="/contact-page.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <ul>
+                        <li><span class="foot-ico bg-home"></span>Zinzikerbergstrasse 36</li>
+                        <li><span class="foot-ico bg-question"></span>CH - 8404 Winterthur</li>
+                        <li><span class="foot-ico bg-phone"></span><a href="tel: 032 510-13-18">Tel. 032 510 13 18</a></li>
+                        <li><span class="foot-ico bg-email"></span><a href="mailto: info@lernchips.ch">info@lernchips.ch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wr-foot-logo">
+                <p><a href="#"><img src="img/logo-w.svg" alt=""></a></p>
+            </div>
+        </div>
+        <div class="bottom-footer">Chipfabrik All rights reserved.</div>
+    </footer>
+    <div id="blanket" class="blanket">
+        <div class="pop-message">
+            <h5 class="pm-title">Meine Elemente</h5>
+            <ul class="list-function">
+                <li class="lf-item">Klicke auf eine Kategorie um die Inhalte anzuzeigen.</li>
+                <li class="lf-item">Klicke auf einen Lernchip oder  Chipset um das Element anzuzeigen oder zu ändern.</li>
+            </ul>
+            <p class="dnt-show">
+                <input class="fcheck-input" type="checkbox" id="dnt_show" value="">
+                <label class="fcheck-input-label" for="dnt_show">Don't show this again</label>
+            </p>
+            <input type="button" class="btn-normal btn-black close-pop" value="Close">
+        </div>
+    </div>
+
+<script defer src="lernchips.bundle.js"></script></body>
+
+</html>

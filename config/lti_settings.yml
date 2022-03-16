@@ -1,0 +1,5 @@
+production:
+  calculatorkey: 'FristSecret'
+
+development:
+  calculatorkey: 'FirstSecret'

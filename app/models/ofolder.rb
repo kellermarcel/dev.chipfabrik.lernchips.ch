@@ -1,0 +1,2 @@
+class Ofolder < ApplicationRecord
+end

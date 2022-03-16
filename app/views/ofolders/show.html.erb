@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ofolder.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @ofolder.parent_id %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @ofolder.organisation_id %>
+</p>
+
+<%= link_to 'Edit', edit_ofolder_path(@ofolder) %> |
+<%= link_to 'Back', ofolders_path %>

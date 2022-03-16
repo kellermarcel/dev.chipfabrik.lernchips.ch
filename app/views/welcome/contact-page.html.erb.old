@@ -1,0 +1,55 @@
+
+    <main class="contact-page page-main">
+        <div class="container">
+            <h1 class="page-title">Kontakt</h1>
+            <div class="f-advert">
+                <div class="fa-info">
+                    <p class="advert-text tb">You can contact us by the following methods:</p>
+                    <ul class="advert-list">
+                        <li>Call this number: 032 510 13 18;</li>
+                        <li>Write to us by email: info@lernchips.ch;</li>
+                        <li>By filling out the form below.</li>
+                    </ul>
+                    <p class="advert-text">Our managers will answer all your questions during the working day. </p>
+                </div>
+                <div class="contact-img">
+                    <img src="./img/contact.png" alt="">
+                </div>
+            </div>
+        </div><!-- container -->
+    </main>
+
+    <section class="contact-form">
+        <div class="cf-container">
+            <h3 class="cf-title">Write to us</h3>
+            <div class="show-warn"></div>
+            <div class="cf-form">
+                <form id="contForm" action="" class="cont-form" novalidate>
+                    <p class="inp-user block-text">
+                        <span class="user-ico"></span><input type="text" id="regUser" name="log_user" required minlength="2" maxlength="8" value="" placeholder="Enter your name">
+                    </p>
+                    <p class="inp-pwd block-text">
+                        <span class="company-ico"></span><input type="text" id="regCompany" name="reg_company" required value="" minlength="4" maxlength="10" placeholder="Enter company name" title="4 to 10 lowercase letters">
+                    </p>
+                    <p class="inp-email block-text">
+                        <span class="email-ico"></span><input type="email" id="regEmail" name="log_email" value="" placeholder="mail@example.com">
+                    </p>
+                    <p class="inp-confirm block-text">
+                        <span class="phone-ico"></span><input type="phone" id="regPhone" name="reg_phone" value="" placeholder="##-###-###" title="##-###-###" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}">
+                    </p>
+                    <p class="inp-message block-text">
+                        <span class="mess-ico"></span><input type="text" name="cont_mess" id="contMess" placeholder="Your message">
+                    </p>
+                    <p class="have-read">
+                    <input type="checkbox" id="haveRead" value>
+                    <label class="fcheck-havere" for="haveRead">I have read the terms of the </label><a href="/privacy-policy.html">privacy policy</a></p>
+                </form>
+
+                <div class="btn-contact">
+                    <a id="contSend" class="btn btn-yellow" href="javascript:void(0);">Send</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+

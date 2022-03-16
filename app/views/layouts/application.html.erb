@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chipfabrik - Main page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'%>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<base href="/"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="favicon.ico">
+<%= stylesheet_link_tag 'index' %>
+<%= stylesheet_link_tag 'lernchips' %>
+
+    <%= javascript_pack_tag 'index' %>
+    <%= javascript_pack_tag 'js/file' %>
+    <%= javascript_pack_tag 'js/lernchips' %>
+    <%= javascript_pack_tag 'js/header' %>
+    <%= javascript_pack_tag 'js/main' %>
+    <%= javascript_pack_tag 'js/chipfabrik' %>
+    <script src="https://unpkg.com/htmx.org@latest" integrity="sha384-tvG/2mnCFmGQzYC1Oh3qxQ7CkQ9kMzYjWZSNtrRZygHPDDqottzEJsqS4oUVodhW" crossorigin="anonymous"></script>
+<script defer src="index.bundle.js"></script>
+
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+
+<% unless flash.empty? %>
+   <script type="text/javascript">
+      <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+     toastr['<%= type %>']('<%= f[1] %>');
+   <% end %>
+   </script>
+<% end %>
+    <%= yield %>
+    <%= render 'shared/footer' %>
+
+  </body>
+</html>

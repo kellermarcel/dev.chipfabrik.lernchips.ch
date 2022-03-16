@@ -1,0 +1,45 @@
+<style>
+        html, body { height: 100%; background-color: white;}
+</style>    
+
+
+    <main class="test-preview page-main">
+
+        <section class="sidebar">
+            <div class="in-sidebar">
+                <p class="wr-buttons">
+                    <a href="lernchips" class="zurueck">&lt; Zurueck</a>
+                </p>
+                <p class="title-menu"></p>
+
+                <div class="panel-menu">
+                    <ul class="list-menu">
+                                <li class="menu-item" > <%= @lernchip.title %></a></li>
+    
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="main-section">
+            <h2 class="title-section"></h2>
+            <div class="container">
+                <div class="main-content" id="content">
+                    <iframe
+                        height="100%";
+                        width="100%";
+                        frameborder="0" style="border:0; min-height:500px"
+                <% if @lernchip.contenttyp.typ==2 %>
+                        <% Rails.logger.info @lernchip.datei %>
+                        src="<%= rails_blob_path(@lernchip.datei) %>" >
+                <% end %>
+                <% if @lernchip.contenttyp.typ==1 %> 
+                        src="<%= CONTENTSERVER%>/h5p/play/<%= @lernchip.urlalias %>" allowfullscreen>
+                 <% end %>
+                    </iframe>
+                 
+                </div>
+            </div>
+        </div><!-- tile-02 -->
+
+    </main>

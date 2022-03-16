@@ -1,0 +1,56 @@
+
+    <main class="individual-step page-main">
+
+    <div class="container">
+        <div class="flex-content">
+            <h1 class="page-title">Registrierung </h1>
+                <div class="reg-line">
+                <div class="number-step ready">
+                    <span class="step-one">1</span>
+                    <div class="step-text">Abonnementswahl</div>
+                </div>
+                    <div class="number-step active">
+                        <span class="step-two">2</span>
+                        <div class="step-text">Persönliche Daten</div>
+                    </div>
+                    <div class="number-step">
+                        <span class="step-three">3</span>
+                        <div class="step-text">Zahlungsinformationen</div>
+                    </div>
+                    <span class="mstep-one"></span>
+                    <span class="mstep-two"></span>
+                </div>
+                <div class="main-content">
+                    <div class="wr-img"><img src="img/werde_teil.png" alt=""></div>
+                    <div class="reg-form">
+                        <form id="regForm" name="reg_form" novalidate>
+                            <p class="inp-user block-text">
+                                <span class="user-ico"></span><input type="text" id="vorname" name="first_name" required minlength="2" maxlength="8" value="" placeholder="Vorname">
+                            </p>
+                            <p class="inp-user block-text">
+                                <span class="user-ico"></span><input type="text" id="name" name="log_user" required minlength="2" maxlength="8" value="" placeholder="Name">
+                            </p>
+                            <p class="inp-email block-text">
+                                <span class="email-ico"></span><input type="email" id="regEmail" name="log_email" required value="" placeholder="mail@example.com">
+                            </p>
+                            <p class="inp-pwd block-text">
+                                <span class="pwd-ico"></span><input type="password" id="regPass" name="reg_pass" required minlength="5" value="" placeholder="enter password">
+                            </p>
+                            <p class="inp-confirm block-text">
+                                <span class="pwd-ico"></span><input type="password" id="confPass" name="conf_pass" required minlength="5" value="" placeholder="confirm password">
+                            </p>
+                            <p class="have-read">
+                            <input type="checkbox" id="haveRead" required value>
+                            <label class="fcheck-havere" for="haveRead">I have read the terms of the </label><a href="/privacy-policy.html">privacy policy</a></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="btn-weiter">
+                    <a class="btn btn-beige" href="/individual-plans">Zurück</a>
+                    <a id="regIndWeiter" class="btn btn-yellow" href="javascript:void(0);">Weiter</a>
+                </div>
+            </div>
+        </div>
+<script defer src="indStep.bundle.js"></script>
+    </main>

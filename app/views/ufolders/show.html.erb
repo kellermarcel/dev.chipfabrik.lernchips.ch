@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ufolder.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @ufolder.parent_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ufolder.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_ufolder_path(@ufolder) %> |
+<%= link_to 'Back', ufolders_path %>

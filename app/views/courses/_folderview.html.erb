@@ -1,0 +1,51 @@
+            <div class="flex-chips" id="lernchips">
+            
+            
+              <% anzahl = 0 %>
+
+              <% for chipset in chipsets %>
+                <div class="item-chip" id="<%=chipset.id%>"  ondrop="drop_chipset(event,this)" ondragover="allowDrop(event)" draggable="true" ondragstart="drag(event)" style="background-color:#e63838;"><%= chipset.courseitems.count %>x
+                    <div class="wr-ico" ><img src="img/chipset.png" alt=""></div>
+                    <h4 class="title-chip"><%= chipset.title %></h4>
+                    <div class="wr-icons" >
+                        <div class="left-half"></div>
+                        <div class="right-half">
+                            <%if chipset.courseitems.count>0 %>    
+                                <a href="javascript:chipsetcontent(<%=chipset.id%>,'<%= chipset.title %>' )"><span class="img-edit"></span></a>
+                                <a href="set-preview?id=<%=chipset.urlextern%>"><span class="img-view"></span></a>
+                                <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <% end %>
+                            <a href="javascript:void(0)" hx-post="courses/delete" hx-vals='"id":"<%=chipset.id%>"' hx-target="#lernchips" ><span class="img-delete"></span></a>
+        
+                        </div>
+                    </div>
+                </div>
+                <% anzahl = anzahl + 1 %>
+                <% if anzahl>11 
+                    break
+                   end %>
+              <% end %>
+
+             <% if anzahl <= 11 %>
+              <% for lernchip in lernchips %>
+                <div class="item-chip" id="<%=lernchip.id%>" draggable="true" ondragstart="drag(event)">
+                    <div class="wr-ico"><img src="img/Accordeon.svg" alt=""></div>
+                    <h4 class="title-chip"><%= lernchip.title %></h4>
+                    <div class="wr-icons">
+                        <div class="left-half"></div>
+                        <div class="right-half">
+                            <a href="<%=CONTENTSERVER%>/h5p/edit/<%=lernchip.urlalias%>"><span class="img-edit"></span></a>
+                            <a href="/test-preview?id='<%=lernchip.urlalias %>"><span class="img-view"></span></a>
+                            <a href="javascript:void(0);"><span class="img-share"></span></a>
+                            <a href="javascript:void(0);"><span class="img-delete"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <% anzahl = anzahl + 1 %>
+                <% if anzahl>11 
+                    break
+                   end %>
+              <% end %>
+            <% end %>
+    
+            </div>

@@ -1,0 +1,69 @@
+<main class="manage-page page-main">
+ <section class="main" id="main_content">
+   <a href="javascript:history.back()">Zurück</a><br/><br/>
+    <div class="flex-img"><img src="/img/lernchip_neu.png" alt="" style="float: right; margin: 0px 0px 15px 15px;"></div>
+            <div class="item-chip">
+                <div class="flex-wrapper">
+                    <div class="flex-info">
+                        <h1 class="info_title">Lernchip erstellen</h1>
+                        <p class="info_subtitle">Wähle aus den unterschiedlichen Übungstypen<br/>
+                    und erstelle einen passenden Lernchip Deiner Wahl</p>
+                    <ul class="advert-list">
+                        <li>Wähle eine Lernchip Kategorie aus</li>
+                        <li>Wähle innerhalb der Kategorie den passenden Lernchip</li>
+                        <li>Konfiguriere Deinen Lernchips</li>
+                        <li>Veröffentliche Deinen Lernchip</li>
+                    </ul>
+                    </div>
+                </div><!-- flex-wrapper -->
+            </div>
+</section>
+ <section class="main" id="main_content">
+<div><h2>Lernchiptyp auswählen</h2></div>
+<div class="flip">
+
+ <% @contentarts.each do |contentart|  %>
+	<div class="flip-card">
+  	  <div class="flip-card-inner">
+    	<div class="flip-card-front">
+        <% if contentart.image.attached? %>
+		   		<img class="flip-card-pict" src="<%=(url_for(contentart.image)) %>">
+        <% end %>
+        <div style="font-size:18px;"><%= contentart.title%></div>
+		    <div style="font-size:14px; "><%= contentart.kurzbeschreibung%></div>
+    	</div>
+
+    	<div class="flip-card-back">
+		    <div class="flipback-title"><%= contentart.title%></div>
+		      <ul>
+		   	    <% c=Contenttypart.where("contentart_id=#{contentart.id} and topanzeige") %>
+		        <% cc=0 %>
+		        <% c.each do |con| %>
+              <%cc=cc+1%>
+              <%if cc<11%>
+                <li><span class="title-chip"><%= con.contenttyp.name %></li>
+              <% end %>
+              <% if cc==11%>
+                <li>...</li>
+              <% end %>
+		        <% end %>
+	        </ul>
+        	<%= link_to  "Alle...", {:controller => "lernchips", :action => "art", :id => contentart.id}, :class => "go" %>
+    	</div>
+  	 </div>
+	 </div>
+
+<% end %>
+</div>
+
+<br/></br>
+<h2>Benötigst Du Hilfe bei der Herstellung?</h2>
+<video source src="https://berufsbildner.lernchips.ch/draftfile.php/27/user/draft/595544526/dashboard.mp4" controls> Ihr Browser kann dieses Video nicht wiedergeben...</video>
+</span>
+</section>
+</main>
+
+
+
+
+

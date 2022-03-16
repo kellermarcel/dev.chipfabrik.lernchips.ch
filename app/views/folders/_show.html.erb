@@ -1,0 +1,14 @@
+<%= folder.name %>
+                      <a 
+                        id="showButton"
+                        hx-get="/folders/<%=folder.id%>/edit" 
+                        hx-target="#modals-here" 
+                        class="edit-menu btn-edit" 
+                        _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"><span class="edit-menu btn-edit"></span>
+                      </a>
+ <% if folder.courses.count+folder.lernchips.count == 0 %>
+
+
+                            <a href="/deletefolder?id=<%=folder.id%>" class="edit-menu btn-del"  ><span class="edit-menu btn-del"></span></a>
+
+<% end %>
